@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="farm.view.InterfaceBoundary">
+   <children>
+      <SplitPane dividerPositions="0.33072407045009783" prefHeight="500.0" prefWidth="590.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <SplitPane dividerPositions="0.7520161290322581" layoutX="92.0" layoutY="136.0" maxWidth="343.0" orientation="VERTICAL" prefHeight="498.0" prefWidth="343.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane maxWidth="358.0" minHeight="0.0" minWidth="0.0" prefHeight="445.0" prefWidth="358.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" text="Farm Items" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                              <Label layoutX="160.0" layoutY="14.0" text="Actions" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="14.0" />
+                              <TreeView fx:id="itemTreeView" layoutX="14.0" layoutY="42.0" minWidth="200.0" onContextMenuRequested="#selectItem" onMouseClicked="#selectItem" prefHeight="329.0" prefWidth="200.0" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="42.0" />
+                              <Button fx:id="btnRename" layoutX="159.0" layoutY="48.0" mnemonicParsing="false" onAction="#onBtnRename" text="Rename" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="48.0" />
+                              <Button fx:id="btnChangeLocation" layoutX="159.0" layoutY="81.0" mnemonicParsing="false" onAction="#onBtnChangeLocation" text="Change Location" AnchorPane.leftAnchor="225.0" />
+                              <Button fx:id="btnChangePrice" layoutX="161.0" layoutY="112.0" mnemonicParsing="false" onAction="#onBtnChangePrice" text="Change Price" AnchorPane.leftAnchor="225.0" />
+                              <Button fx:id="btnChangeDimensions" layoutX="163.0" layoutY="144.0" mnemonicParsing="false" onAction="#onBtnChangeDimensions" text="Change Dimensions" AnchorPane.leftAnchor="225.0" />
+                              <Button fx:id="btnChangeMarketValue" layoutX="223.0" layoutY="205.0" mnemonicParsing="false" onAction="#onBtnChangeMarketValue" text="Change Market Value" visible="false" AnchorPane.leftAnchor="225.0" />
+                              <Button fx:id="btnDelete" layoutX="159.0" layoutY="173.0" mnemonicParsing="false" onAction="#onBtnDelete" text="Delete" AnchorPane.leftAnchor="225.0" />
+                              <Button fx:id="btnAddItem" layoutX="159.0" layoutY="205.0" mnemonicParsing="false" onAction="#onBtnAddItem" text="Add item" AnchorPane.leftAnchor="225.0" />
+                              <Button fx:id="btnAddItemContainer" layoutX="162.0" layoutY="237.0" mnemonicParsing="false" onAction="#onBtnAddItemContainer" text="Add item-container" AnchorPane.leftAnchor="225.0" />
+                              <Label fx:id="lblCurrentMarketValue" layoutX="18.0" layoutY="407.0" prefHeight="24.0" prefWidth="323.0" text="Current Market Value:" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="18.0" />
+                              <Label fx:id="lblPurchasePrice" layoutX="18.0" layoutY="389.0" prefHeight="24.0" prefWidth="323.0" text="Purchase Price:" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="18.0" />
+                              <Label fx:id="lblDescription" layoutX="18.0" layoutY="371.0" prefHeight="24.0" prefWidth="323.0" text="Description:" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="18.0" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="300.0">
+                           <children>
+                              <RadioButton fx:id="scanItemRadio" layoutY="69.0" mnemonicParsing="false" text="Visit item / Item Container" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="69.0">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="dronestate" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="scanFarmRadio" layoutX="218.0" layoutY="69.0" mnemonicParsing="false" text="Scan Farm" toggleGroup="$dronestate" AnchorPane.leftAnchor="218.0" AnchorPane.topAnchor="69.0" />
+                              <ButtonBar layoutX="8.0" layoutY="91.0" prefHeight="40.0" prefWidth="376.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="91.0">
+                                <buttons>
+                                    <Button fx:id="flyDroneButton" mnemonicParsing="false" onAction="#handleFlyDroneButton" text="Fly Drone" />
+                                    <Button fx:id="flyAgainButton" mnemonicParsing="false" onAction="#onBtnFlyAgain" prefHeight="27.0" prefWidth="86.0" text="Fly Again" />
+                                    <Button fx:id="btnLaunchDrone" mnemonicParsing="false" onAction="#onBtnLaunchDrone" text="Launch Drone" />
+                                </buttons>
+                              </ButtonBar>
+                              <CheckBox fx:id="cbPropertyBoundary" layoutX="152.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleCheckBoxPropertyBoundary" text="Property Boundary" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="22.0" />
+                              <CheckBox fx:id="cbAerialPhoto" layoutX="22.0" layoutY="51.0" mnemonicParsing="false" onAction="#handleCheckBoxAerialPhoto" text="Aerial Photo" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="44.0" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane fx:id="dashboard" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
+               <children>
+                  <ImageView fx:id="drone" fitHeight="86.0" fitWidth="96.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                     <image>
+                        <Image url="@../../img/drone.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
